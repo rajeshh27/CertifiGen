@@ -25,7 +25,8 @@ app.use(cors({
         'http://localhost:5173',
         'http://localhost:3000',
         'http://127.0.0.1:5173',
-        FRONTEND_URL  // ← loaded from .env (your Vercel URL in production)
+        'https://certifi-2pq1gqpre-rajeshh27s-projects.vercel.app',
+        FRONTEND_URL
     ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
