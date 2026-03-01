@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Temp files
+backend/uploads/
+backend/generated/
+
+# Build output
+frontend/dist/
+
+# Environment secrets — NEVER commit these
+backend/.env
+
+# Logs
+*.log
+npm-debug.log*
