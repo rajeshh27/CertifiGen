@@ -107,8 +107,8 @@ function App() {
                 } catch {
                     setError('Certificate generation failed. Check that your Excel has a "Name" column.');
                 }
-            } else if (err.code === 'ECONNREFUSED' || err.message.includes('Network')) {
-                setError('Cannot connect to server. Make sure the backend is running on port 5000.');
+            } else if (err.code === 'ERR_NETWORK' || err.message?.toLowerCase().includes('network')) {
+                setError(`Cannot reach the server at ${API_BASE}. If using the live site, the server may be waking up — wait 30 seconds and try again.`);
             } else {
                 setError('An unexpected error occurred. Please try again.');
             }
