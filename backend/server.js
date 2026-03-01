@@ -8,7 +8,6 @@ const certificateRoutes = require('./routes/certificateRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 // Create required directories if they don't exist
 const dirs = ['uploads', 'generated'];
@@ -19,18 +18,9 @@ dirs.forEach(dir => {
     }
 });
 
-// Middlewares
-app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://localhost:3000',
-        'http://127.0.0.1:5173',
-        'https://certifi-2pq1gqpre-rajeshh27s-projects.vercel.app',
-        FRONTEND_URL
-    ],
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
-}));
+// Open CORS — this is a fully public, stateless file-processing API
+// (no auth, no database, no sensitive data — safe to allow all origins)
+app.use(cors());
 
 app.use(express.json());
 
@@ -44,5 +34,4 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`✅ CertifiGen server running on http://localhost:${PORT}`);
-    console.log(`🌐 Allowed frontend origin: ${FRONTEND_URL}`);
 });
